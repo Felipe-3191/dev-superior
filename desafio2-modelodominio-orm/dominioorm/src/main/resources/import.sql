@@ -4,9 +4,9 @@ INSERT INTO tb_categoria (descricao) VALUES ('Oficina');
 INSERT INTO tb_atividade (nome,descricao,preco,id_categoria) VALUES ('Curso de HTML', 'Aprenda HTML de forma prática', 80.00, 1);
 INSERT INTO tb_atividade (nome,descricao,preco,id_categoria) VALUES ('Oficina de Github', 'Controle versões dos seus projetos', 50.00, 2);
 
-INSERT INTO tb_bloco (inicio,fim,id_atividade) VALUES ('20170925T08:00:00Z', '20170925T11:00:00Z', 1);
-INSERT INTO tb_bloco (inicio,fim,id_atividade) VALUES ('20170925T14:00:00Z', '20170925T18:00:00Z', 2);
-INSERT INTO tb_bloco (inicio,fim,id_atividade) VALUES ('20170926T08:00:00Z', '20170926T11:00:00Z', 2);
+INSERT INTO tb_bloco (inicio,fim,teste_timezone,id_atividade) VALUES (TIMESTAMP WITHOUT TIME ZONE '2017-09-25T08:00:00Z', TIMESTAMP WITHOUT TIME ZONE '2017-09-25T11:00:00', TIMESTAMP WITH TIME ZONE '2017-09-25T11:00:00-03:00', 1);
+INSERT INTO tb_bloco (inicio,fim,teste_timezone,id_atividade) VALUES (TIMESTAMP WITHOUT TIME ZONE '2017-09-25T14:00:00', TIMESTAMP WITHOUT TIME ZONE '2017-09-25T18:00:00', TIMESTAMP WITH TIME ZONE '2017-09-25T18:00:00Z' , 2);
+INSERT INTO tb_bloco (inicio,fim,teste_timezone,id_atividade) VALUES (TIMESTAMP WITHOUT TIME ZONE '2017-09-26T08:00:00Z', TIMESTAMP WITHOUT TIME ZONE '2017-09-26T11:00:00', TIMESTAMP WITH TIME ZONE '2017-09-26T11:00:00Z', 2);
 
 INSERT INTO tb_participante(nome,email) VALUES ('José Silva', 'jose@gmail.com');
 INSERT INTO tb_participante(nome,email) VALUES ('Tiago Faria', 'tiago@gmail.com');

@@ -20,6 +20,8 @@ public class Bloco {
     @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
     private Instant fim;
 
+    private Instant testeTimezone;
+
     @ManyToOne
     @JoinColumn(name = "id_atividade")
     private Atividade atividade;
@@ -65,6 +67,14 @@ public class Bloco {
         this.atividade = atividade;
     }
 
+    public Instant getTesteTimezone() {
+        return testeTimezone;
+    }
+
+    public void setTesteTimezone(Instant testeTimezone) {
+        this.testeTimezone = testeTimezone;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -79,4 +89,6 @@ public class Bloco {
     public int hashCode() {
         return id != null ? id.hashCode() : 0;
     }
+
+
 }
