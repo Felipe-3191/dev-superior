@@ -60,7 +60,7 @@ public class ProductService {
     }
 
 
-    @Transactional(propagation = Propagation.SUPPORTS)
+    @Transactional
     public void delete(Long id) {
         if (!repository.existsById(id)) {
             throw new ResourceNotFoundException("Recurso não encontrado");
@@ -68,7 +68,12 @@ public class ProductService {
         try {
             repository.deleteById(id);
         } catch (DataIntegrityViolationException ex) {
+            System.out.println("peguei essa exceção");
             throw new DatabaseException("Falha de integridade referencial");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            System.out.println("peguei essa exception genérica");
+
         }
     }
 

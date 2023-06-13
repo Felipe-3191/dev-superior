@@ -4,7 +4,9 @@ import com.devsuperior.felipe.dscommerce.dto.ProductDTO;
 import com.devsuperior.felipe.dscommerce.entities.Product;
 import com.devsuperior.felipe.dscommerce.repositories.ProductRepository;
 import com.devsuperior.felipe.dscommerce.services.ProductService;
+import com.devsuperior.felipe.dscommerce.services.exceptions.DatabaseException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -53,9 +55,13 @@ public class ProductController {
 
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Void> delete (@PathVariable Long id){
-        service.delete(id);
-        //return ResponseEntity.status(HttpStatus.NO_CONTENT).build(); alternativamente também funcionaria assim
-        return ResponseEntity.noContent().build();
+        try {
+            service.delete(id);
+            //return ResponseEntity.status(HttpStatus.NO_CONTENT).build(); alternativamente também funcionaria assim
+            return ResponseEntity.noContent().build();
+        } catch (DataIntegrityViolationException ex) {
+            throw new DatabaseException("aqui");
+        }
     }
 
 }
