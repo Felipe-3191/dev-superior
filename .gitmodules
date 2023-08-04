@@ -1,0 +1,3 @@
+[submodule "jpa-examples"]
+	path = jpa-examples
+	url = git@github.com:Felipe-3191/jpa-examples.git
